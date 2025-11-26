@@ -89,22 +89,22 @@ char UpdateDirection(char old_dir){
 }
 
 // 根据方向移动蛇函数
-void MoveSnake(LinkList hummy, unit map[width][length], char dir){
+void MoveSnake(LinkList dummy, unit map[width][length], char dir){
     Lnode *newbody = (LinkList)malloc(sizeof(Lnode));
     newbody->next = NULL;
     switch (dir) {
-        case LEFT:  newbody->x = hummy->next->x - 1;
-                    newbody->y = hummy->next->y; break; // 左
-        case RIGHT: newbody->x = hummy->next->x + 1; 
-                    newbody->y = hummy->next->y; break; // 右
-        case UP:    newbody->y = hummy->next->y - 1; 
-                    newbody->x = hummy->next->x; break; // 上
-        case DOWN:  newbody->y = hummy->next->y + 1; 
-                    newbody->x = hummy->next->x; break; // 下
+        case LEFT:  newbody->x = dummy->next->x - 1;
+                    newbody->y = dummy->next->y; break; // 左
+        case RIGHT: newbody->x = dummy->next->x + 1; 
+                    newbody->y = dummy->next->y; break; // 右
+        case UP:    newbody->y = dummy->next->y - 1; 
+                    newbody->x = dummy->next->x; break; // 上
+        case DOWN:  newbody->y = dummy->next->y + 1; 
+                    newbody->x = dummy->next->x; break; // 下
     }
     //新结点插入到首元位置
-    newbody->next = hummy->next;
-    hummy->next = newbody;
+    newbody->next = dummy->next;
+    dummy->next = newbody;
 }
 
 // 随机生成果子函数
@@ -123,15 +123,15 @@ void CreateFruit(unit map[width][length]){
 }
 
 //判断是否吃到果实函数
-void IfEatFruit(unit map[width][length], LinkList hummy, int *score){
+void IfEatFruit(unit map[width][length], LinkList dummy, int *score){
     // 吃到了果子
-    if ( map[hummy->next->y][hummy->next->x] == 2 ){
+    if ( map[dummy->next->y][dummy->next->x] == 2 ){
         CreateFruit(map);
         (*score)++;
     }
     // 没吃到果子
     else {
-        LinkList p = hummy;
+        LinkList p = dummy;
         while ( p->next->next){
             p = p->next;
         }

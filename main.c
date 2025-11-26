@@ -18,8 +18,8 @@ int main(){
     snake->y = width / 2;
     snake->next = NULL;
     // 设置虚拟头节点
-    LinkList hummy = (LinkList)malloc(sizeof(Lnode));
-    hummy->next = snake;
+    LinkList dummy = (LinkList)malloc(sizeof(Lnode));
+    dummy->next = snake;
     // 默认蛇头朝右移动
     char dir = RIGHT;
     // 默认生成果子
@@ -29,9 +29,9 @@ int main(){
         // 获取新方向
         dir = UpdateDirection(dir);
         // 根据方向移动蛇链表
-        MoveSnake( hummy, map, dir);
+        MoveSnake( dummy, map, dir);
         // snake 指针指向最新的头
-        snake = hummy->next;
+        snake = dummy->next;
 
 // **********失败检测**********
 {       
@@ -45,7 +45,7 @@ int main(){
         }
 }
         //判断是否吃到果实和返回当前分数
-        IfEatFruit(map, hummy, &score);
+        IfEatFruit(map, dummy, &score);
         // 将全地图除果实外的格子刷新为空
         RefreshMap(map);
         // 遍历蛇链表将全部坐标在二维数组中设为1

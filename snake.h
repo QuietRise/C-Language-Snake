@@ -37,10 +37,10 @@ void RefreshMap( unit map[width][length]);
 // 读取按键并更新方向函数
 char UpdateDirection(char old_dir);
 // 根据方向移动蛇函数
-void MoveSnake(LinkList hummy, unit map[width][length], char dir);
+void MoveSnake(LinkList dummy, unit map[width][length], char dir);
 // 随机生成果子函数
 void CreateFruit(unit map[width][length]);
 //判断是否吃到果实函数
-void IfEatFruit(unit map[width][length], LinkList hummy, int *score);
+void IfEatFruit(unit map[width][length], LinkList dummy, int *score);
 
 #endif
